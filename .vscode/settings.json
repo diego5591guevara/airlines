@@ -1,0 +1,6 @@
+{
+    "material-icon-theme.activeIconPack": "nest",
+    "editor.inlineSuggest.enabled": true,
+    "workbench.iconTheme": "material-icon-theme",
+    "editor.wordWrap": "on"
+}
