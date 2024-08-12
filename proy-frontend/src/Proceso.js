@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import {
   Container,
@@ -19,6 +19,7 @@ import {
 } from "@mui/material";
 import { format, parseISO } from "date-fns";
 import Boleto from "./components/Boleto";
+import ReactToPrint from 'react-to-print';
 
 const Proceso = () => {
   const [obj, setObj] = useState({
@@ -30,6 +31,7 @@ const Proceso = () => {
   const [error, setError] = useState(null);
   const [vuelos, setVuelos] = useState([]);
   const [reserva, setReserva] = useState(null);
+  const boletoRef = useRef();
 
   const listaVuelos = async () => {
     try {
@@ -151,7 +153,7 @@ const Proceso = () => {
               />
               <TextField
                 fullWidth
-                label="Asientos (separado por comas)"
+                label="Asientos"
                 name="asientos"
                 type="number"
                 variant="outlined"
@@ -179,9 +181,26 @@ const Proceso = () => {
                 <Alert severity="error">{error}</Alert>
               </Box>
             )}
+            {reserva && (
+              <ReactToPrint
+                trigger={() => (
+                  <Button
+                    variant="contained"
+                    color="secondary"
+                    sx={{ mt: 3 }}
+                    fullWidth
+                  >
+                    Imprimir Boleto
+                  </Button>
+                )}
+                content={() => boletoRef.current}
+              />
+            )}
           </CardContent>
         </Card>
-        {reserva && <Boleto reserva={reserva} />}
+        <div ref={boletoRef}>
+          <Boleto reserva={reserva} />
+        </div>
       </Box>
     </Container>
   );
