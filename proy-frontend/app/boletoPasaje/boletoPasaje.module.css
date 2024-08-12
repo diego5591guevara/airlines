@@ -1,0 +1,204 @@
+.container {
+    text-align: center;
+    padding: 50px;
+  }
+  
+  .title {
+    font-size: 2em;
+    margin-bottom: 20px;
+    color: #3a863d; 
+  }
+  
+  .message {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+  }
+  
+  .links {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  .button, .buttonBack {
+    background-color: #2e63ac;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .button:hover {
+    background-color: #17488B;
+  }
+
+  .buttonBack {
+    background-color: #f5a623; 
+  }
+  
+  .buttonBack:hover {
+    background-color: #d4881b;
+  }
+
+  /******/
+
+  .boletoContainer {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    border: 1px solid #ccc;
+    padding: 20px;
+    background-color: #f3f3f3;
+    border-radius: 10px;
+  }
+  
+  .boletoHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .airlineName {
+    font-size: 1.5em;
+    color: #1a73e8;
+  }
+  
+  .boardingPass {
+    font-size: 1.2em;
+    font-weight: bold;
+  }
+  
+  .boletoInfo {
+    margin-top: 20px;
+  }
+  
+  .boletoSection {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+  
+  .label {
+    font-weight: bold;
+    color: #555;
+  }
+  
+  .value {
+    color: #000;
+  }
+  
+  .boletoFooter {
+    margin-top: 20px;
+  }
+  
+  .importantNote {
+    font-size: 0.9em;
+    color: #e53935;
+    text-align: center;
+  }
+
+  /************/
+
+  .ticket {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    border: 2px solid #0066cc;
+    border-radius: 10px;
+    padding: 20px;
+    font-family: 'Arial', sans-serif;
+    color: #333;
+    background-color: #FFFFFF;
+  }
+  
+  .ticketHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #0066cc;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .airlineName {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #0066cc;
+    display: flex;
+    align-items: center;
+  }
+  
+  .airlineName p{   
+    margin-left: 10px;
+  }
+
+  .boardingPass {
+    font-size: 1.2em;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  
+  .ticketBody {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+  
+  .passengerInfo {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    gap: 30px;
+  }
+  
+  .infoLeft{
+    width: 35%;
+    text-align: left;
+  }
+
+  .infoRight {
+    width: 25%;
+    text-align: left;
+  }
+  .infoQR {
+    width: 20%;
+    text-align: center;
+  }
+  
+  .label {
+    font-size: 0.8em;
+    color: #666;
+    margin-bottom: 5px;
+  }
+  
+  .value {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .ticketFooter {
+    border-top: 2px solid #0066cc;
+    padding-top: 10px;
+    text-align: center;
+    font-size: 0.8em;
+  }
+  
+  .note {
+    font-size: 0.8em;
+    color: #666;
+  }
+
+  .pasajeroBoletos {
+    page-break-after: always;
+    margin-bottom: 40px; 
+  }
+  
+  .boleto {
+    margin-bottom: 20px; 
+  }
+
+  .tiutloNombre{
+    text-align: center;
+  }

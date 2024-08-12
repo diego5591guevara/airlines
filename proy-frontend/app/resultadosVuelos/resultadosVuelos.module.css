@@ -1,0 +1,124 @@
+.loadingContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70vh; 
+  }
+  
+  .loadingGif {
+    width: 100px;
+    height: 100px;
+  }
+
+  .contentContainer {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    color: #17488B;
+  }
+  
+  .vuelosList {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .vueloItem {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .vueloItem:hover {
+    background-color: #e2e2e2;
+    border-color: #17488B;
+  }
+  
+  .selected {
+    background-color: #cce5ff;
+    border-color: #000000;
+  }
+  
+  .vueloHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .hora {
+    font-size: 1.5em;
+  }
+  
+  .duracion {
+    font-size: 1em;
+    color: gray;
+    text-align: center;
+  }
+  
+  .vueloBody {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .vueloImg {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 700px;
+  }
+
+  .tipoVuelo {
+    font-size: 1em;
+    color: green;
+    width: 42px;
+  }
+  
+  .operadoPor {
+    font-size: 0.9em;
+    color: #555;
+  }
+  
+  .precio {
+    font-size: 1.5em;
+    color: #17488B;
+  }
+
+  .botonesContainer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+  
+  .regresarBtn,
+  .reservarBtn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .regresarBtn {
+    background-color: #f5a623;
+    color: white;
+  }
+  
+  .reservarBtn {
+    background-color: #2e63ac;
+    color: white;
+  }
+  
+  .regresarBtn:hover {
+    background-color: #d4881b;
+  }
+  
+  .reservarBtn:hover {
+    background-color: #17488B;
+  }

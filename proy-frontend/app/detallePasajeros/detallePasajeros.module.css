@@ -1,0 +1,93 @@
+.loadingContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 70vh; 
+}
+
+.loadingGif {
+  width: 100px;
+  height: 100px;
+}
+
+.pasajerosContainer {
+  max-width: 700px; 
+  margin: 0 auto;
+  padding: 20px;
+  color: #17488B;
+}
+
+.pasajeroCard {
+  background-color: #f9f9f9;
+  border-radius: 8px;  
+  padding: 15px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+ 
+}
+
+.inputRow {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px; 
+}
+
+.inputRow .inputText {
+  flex: 1;
+}
+
+.fieldGroup {
+  margin-bottom: 10px;
+  width: 300px;
+}
+
+.label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.inputText,
+.selectDropdown {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px; 
+  border: 1px solid #294983;
+  font-size: 14px;
+  box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.1);
+  color: #000; 
+}
+
+.inputCheckbox {
+  margin-top: 10px;
+  margin-bottom: 15px;
+}
+
+.buttonGroup {
+  display: flex;
+  justify-content: space-between; 
+  margin-top: 20px;
+}
+
+.button {
+  background-color: #2e63ac;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.button:hover {
+  background-color: #17488B;
+}
+
+.regresarButton {
+  background-color: #f5a623; 
+}
+
+.regresarButton:hover {
+  background-color: #d4881b;
+}
