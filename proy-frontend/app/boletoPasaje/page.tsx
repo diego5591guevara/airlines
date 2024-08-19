@@ -101,7 +101,7 @@ const BoletoPasaje = () => {
   );
 
   const handleVisualizarBoleto = () => {
-    const input = document.getElementById("boleto"); 
+    const input = document.getElementById("boleto");
 
     if (!input) {
       console.error("Elemento no encontrado");
@@ -153,32 +153,60 @@ const BoletoPasaje = () => {
 
   return (
     <div className={styles.container}>
-      <h1 className={styles.title}>¡Pago exitoso!</h1>
-      <p className={styles.message}>
-        {mensaje || "Tu compra se ha realizado con éxito."}
-      </p>
-
-      <div className={styles.links}>
-        <button onClick={handleRegresarInicio} className={styles.buttonBack}>
-          Regresar al Inicio
-        </button>
-        <button onClick={handleImprimirBoleto} className={styles.button}>
-          Imprimir Boleto
+      <div className={styles.paymentDetailsContainer}>
+        <h3>Detalles del Pago</h3>
+        <div className={styles.paymentDetail}>
+          <p>
+            <strong>Método de Pago:</strong> Tarjeta de Crédito (Visa)
+          </p>
+          <p>
+            <strong>Monto Total:</strong> USD 295.00
+          </p>
+          <p>
+            <strong>Impuestos y Tarifas:</strong> USD 100.30
+          </p>
+          <p>
+            <strong>Total Pagado:</strong> USD 395.30
+          </p>
+          <p>
+            <strong>Fecha de Transacción:</strong> 18/08/2024
+          </p>
+          <p>
+            <strong>Hora de Transacción:</strong> 21:35
+          </p>
+        </div>
+        <button className={styles.sendReceiptButton}>
+          Enviar constancia al correo
         </button>
       </div>
-      <br />
-      <div ref={boletoRef}>
-        {boletos.map(({ pasajero, ida, vuelta }, index) => (
-          <div key={index} className={styles.pasajeroBoletos}>
-            <h2
-              className={styles.tiutloNombre}
-            >{`${pasajero.nombre} ${pasajero.apellido}`} - {pasajero.numero}</h2>
-            <br />
-            <Boleto pasajero={pasajero} vuelo={ida} tipo="Ida" />
-            <br />
-            <Boleto pasajero={pasajero} vuelo={vuelta} tipo="Vuelta" />
-          </div>
-        ))}
+      <div className={styles.formContainer}>
+        <h1 className={styles.title}>¡Pago exitoso!</h1>
+        <p className={styles.message}>
+          {mensaje || "Tu compra se ha realizado con éxito."}
+        </p>
+
+        <div className={styles.links}>
+          <button onClick={handleRegresarInicio} className={styles.buttonBack}>
+            Regresar al Inicio
+          </button>
+          <button onClick={handleImprimirBoleto} className={styles.button}>
+            Imprimir Boleto
+          </button>
+        </div>
+        <br />
+        <div ref={boletoRef}>
+          {boletos.map(({ pasajero, ida, vuelta }, index) => (
+            <div key={index} className={styles.pasajeroBoletos}>
+              <h2 className={styles.tiutloNombre}>
+                {`${pasajero.nombre} ${pasajero.apellido}`} - {pasajero.numero}
+              </h2>
+              <br />
+              <Boleto pasajero={pasajero} vuelo={ida} tipo="Ida" />
+              <br />
+              <Boleto pasajero={pasajero} vuelo={vuelta} tipo="Vuelta" />
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );

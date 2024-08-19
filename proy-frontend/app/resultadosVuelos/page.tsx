@@ -3,7 +3,7 @@
 import { useEffect, useState, useRef } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import axios from "axios";
-import styles from "./resultadosVuelos.module.css"; 
+import styles from "./resultadosVuelos.module.css";
 
 const ResultadosVuelos = () => {
   const searchParams = useSearchParams();
@@ -16,6 +16,11 @@ const ResultadosVuelos = () => {
   const [isVuelta, setIsVuelta] = useState(false);
   const [loadingVuelta, setLoadingVuelta] = useState(false);
   const [vueloSeleccionadoIda, setVueloSeleccionadoIda] = useState(null);
+  const [precioMin, setPrecioMin] = useState(100);
+  const [precioMax, setPrecioMax] = useState(2000);
+  const [fechaIda, setFechaIda] = useState(null);
+  const [fechaVuelta, setFechaVuelta] = useState(null);
+  
 
   useEffect(() => {
     if (hasFetchedData.current) return;
@@ -31,6 +36,8 @@ const ResultadosVuelos = () => {
       const fetchVuelos = async () => {
         try {
           const idaFormat = new Date(ida).toISOString().split("T")[0];
+
+          setFechaIda(idaFormat);
 
           const response = await axios.get(
             "http://localhost:3001/vuelos/buscar",
@@ -55,18 +62,25 @@ const ResultadosVuelos = () => {
     }
   }, [searchParams]);
 
-  const handleSeleccionarVueloIda = (vuelo) => {
+  const handleRangeChange = (event) => {
+    const value = event.target.value;
     
+    setPrecioMin(value);    
+  };
+  
+  const handleSeleccionarVueloIda = (vuelo) => {
     setVueloSeleccionadoIda(vuelo._id);
     setLoadingVuelta(true);
 
-    const destino = searchParams.get("origen"); 
+    const destino = searchParams.get("origen");
     const origen = searchParams.get("destino");
     const vuelta = searchParams.get("vuelta");
 
     const fetchVuelosVuelta = async () => {
       try {
         const vueltaFormat = new Date(vuelta).toISOString().split("T")[0];
+
+        setFechaVuelta(vueltaFormat);
 
         const response = await axios.get(
           "http://localhost:3001/vuelos/buscar",
@@ -93,21 +107,20 @@ const ResultadosVuelos = () => {
 
   const handleSeleccionarVueloVuelta = (vueloVuelta) => {
     const pasajeros = searchParams.get("pasajeros");
-   
+
     router.push(
       `/detallePasajeros?ida=${vueloSeleccionadoIda}&vuelta=${vueloVuelta._id}&pasajeros=${pasajeros}`
     );
   };
 
-
   const handleRegresarIda = () => {
     setIsVuelta(false);
     hasFetchedData.current = false;
     setVueloSeleccionado(null);
-    window.location.reload(); 
+    window.location.reload();
   };
 
-  if (loading || loadingVuelta) { 
+  if (loading || loadingVuelta) {
     return (
       <div className={styles.loadingContainer}>
         <img
@@ -124,56 +137,93 @@ const ResultadosVuelos = () => {
   }
 
   return (
-    <div className={styles.contentContainer}>
-      <h1>{isVuelta ? "Selecciona tu vuelo de vuelta" : "Selecciona tu vuelo de ida"}</h1>
-      <br />
-      {vuelos.length > 0 ? (
-        <ul className={styles.vuelosList}>
-          {vuelos.map((vuelo) => (
-            <li
-              key={vuelo.id}
-              className={`${styles.vueloItem} ${
-                vueloSeleccionado === vuelo.id ? styles.selected : ""
-              }`}
-              onClick={() => isVuelta
-                ? handleSeleccionarVueloVuelta(vuelo)
-                : handleSeleccionarVueloIda(vuelo)}
-            >
-              <div className={styles.vueloHeader}>
-                <div className={styles.hora}>
-                  <strong>{vuelo.horaSalida}</strong> {vuelo.origen}
+    <div className={styles.container}>
+      <aside className={styles.sidebar}>
+      <div className={styles.filterGroup}>
+        <h4>Filtrar Resultados</h4>
+        <label>
+          <input type="checkbox" /> Solo vuelos directos
+        </label>
+      </div>
+      <div className={styles.filterGroup}>
+        <h4>Rango de Precios</h4>
+        <input 
+          type="range" 
+          className={styles.rangeSlider} 
+          min="100" 
+          max="2000" 
+          value={precioMin} 
+          onChange={handleRangeChange} 
+        />
+        <p className={styles.rangeValue}>${precioMin} - ${precioMax}</p>
+      </div>
+      <div className={styles.filterGroup}>
+        <h4>Hora de Salida</h4>
+        <label><input type="checkbox" /> Mañana (06:00 - 12:00)</label>
+        <label><input type="checkbox" /> Tarde (12:00 - 18:00)</label>
+        <label><input type="checkbox" /> Noche (18:00 - 00:00)</label>
+        <label><input type="checkbox" /> Madrugada (00:00 - 06:00)</label>        
+      </div>
+      <button className={styles.applyButton}>Aplicar Filtros</button>
+      </aside>
+
+      <main className={styles.contentContainer}>
+        <h1>
+          {isVuelta
+            ? "Selecciona tu vuelo de vuelta "+ fechaVuelta
+            : "Selecciona tu vuelo de ida "+ fechaIda}            
+        </h1>
+        <br />
+        {vuelos.length > 0 ? (
+          <ul className={styles.vuelosList}>
+            {vuelos.map((vuelo) => (
+              <li
+                key={vuelo.id}
+                className={`${styles.vueloItem} ${
+                  vueloSeleccionado === vuelo.id ? styles.selected : ""
+                }`}
+                onClick={() =>
+                  isVuelta
+                    ? handleSeleccionarVueloVuelta(vuelo)
+                    : handleSeleccionarVueloIda(vuelo)
+                }
+              >
+                <div className={styles.vueloHeader}>
+                  <div className={styles.hora}>
+                    <strong>{vuelo.horaSalida}</strong> {vuelo.origen}
+                  </div>
+                  <div className={styles.duracion}>
+                    Duración <br />
+                    {vuelo.duracion}
+                  </div>
+                  <div className={styles.hora}>
+                    <strong>{vuelo.horaLlegada}</strong> {vuelo.destino}
+                  </div>
                 </div>
-                <div className={styles.duracion}>
-                  Duración <br />
-                  {vuelo.duracion}
+                <div className={styles.vueloImg}>
+                  <img src="/avion.png" alt="avion" width={25} height={25} />
                 </div>
-                <div className={styles.hora}>
-                  <strong>{vuelo.horaLlegada}</strong> {vuelo.destino}
+                <div className={styles.vueloBody}>
+                  <div className={styles.operadoPor}>Operado por AirLines</div>
+                  <div className={styles.tipoVuelo}>Directo</div>
+                  <div className={styles.precio}>
+                    Tarifa <strong>USD {vuelo.precio}</strong>
+                  </div>
                 </div>
-              </div>
-              <div className={styles.vueloImg}>
-                <img src="/avion.png" alt="avion" width={25} height={25} />
-              </div>
-              <div className={styles.vueloBody}>
-                <div className={styles.operadoPor}>Operado por AirLines</div>
-                <div className={styles.tipoVuelo}>Directo</div>
-                <div className={styles.precio}>
-                  Tarifa <strong>USD {vuelo.precio}</strong>
-                </div>
-              </div>
-            </li>
-          ))}
-        </ul>
-      ) : (
-        <p>No se encontraron vuelos para los criterios seleccionados.</p>
-      )}
-      {isVuelta && (
-        <div className={styles.botonesContainer}>
-          <button onClick={handleRegresarIda} className={styles.regresarBtn}>
-            Regresar
-          </button>         
-        </div>
-      )}
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <p>No se encontraron vuelos para los criterios seleccionados.</p>
+        )}
+        {isVuelta && (
+          <div className={styles.botonesContainer}>
+            <button onClick={handleRegresarIda} className={styles.regresarBtn}>
+              Regresar
+            </button>
+          </div>
+        )}
+      </main>
     </div>
   );
 };

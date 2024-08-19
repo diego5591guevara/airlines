@@ -1,124 +1,211 @@
+.container {
+  display: inline-flex;
+  gap: 20px;
+  padding: 20px;
+}
+
 .loadingContainer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 70vh; 
-  }
-  
-  .loadingGif {
-    width: 100px;
-    height: 100px;
-  }
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 70vh;
+}
 
-  .contentContainer {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-    color: #17488B;
-  }
-  
-  .vuelosList {
-    list-style-type: none;
-    padding: 0;
-  }
-  
-  .vueloItem {
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    margin-bottom: 20px;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    background-color: #fff;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .vueloItem:hover {
-    background-color: #e2e2e2;
-    border-color: #17488B;
-  }
-  
-  .selected {
-    background-color: #cce5ff;
-    border-color: #000000;
-  }
-  
-  .vueloHeader {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 10px;
-  }
-  
-  .hora {
-    font-size: 1.5em;
-  }
-  
-  .duracion {
-    font-size: 1em;
-    color: gray;
-    text-align: center;
-  }
-  
-  .vueloBody {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .vueloImg {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 700px;
-  }
+.loadingGif {
+  width: 100px;
+  height: 100px;
+}
 
-  .tipoVuelo {
-    font-size: 1em;
-    color: green;
-    width: 42px;
-  }
-  
-  .operadoPor {
-    font-size: 0.9em;
-    color: #555;
-  }
-  
-  .precio {
-    font-size: 1.5em;
-    color: #17488B;
-  }
+.sidebar {
+  width: 280px;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border: 1px solid #cdd4da; 
+}
 
-  .botonesContainer {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 20px;
-  }
-  
-  .regresarBtn,
-  .reservarBtn {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 16px;
-  }
-  
-  .regresarBtn {
-    background-color: #f5a623;
-    color: white;
-  }
-  
-  .reservarBtn {
-    background-color: #2e63ac;
-    color: white;
-  }
-  
-  .regresarBtn:hover {
-    background-color: #d4881b;
-  }
-  
-  .reservarBtn:hover {
-    background-color: #17488B;
-  }
+.filterGroup {
+  margin-bottom: 20px;
+}
+
+.filterGroup h4 {
+  font-size: 1.2em;
+  margin-bottom: 10px;
+  color: #17488B;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 5px;
+}
+
+.filterGroup p {
+  font-size: 0.9em;
+  color: #17488B;
+  margin-bottom: 15px;
+}
+
+.filterGroup label{
+  display: block;
+}
+
+.rangeSlider {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.rangeValue {
+  text-align: center;
+  margin-bottom: 15px;
+  font-size: 1em;
+  color: #17488B;
+}
+
+.checkboxGroup {
+  margin-bottom: 20px;
+}
+
+.checkboxGroup label {
+  display: flex;
+  align-items: center;
+  font-size: 1em;
+  color: #17488B;
+  cursor: pointer;
+}
+
+.checkboxGroup input {
+  margin-right: 10px;
+}
+
+.applyButton {
+  background-color: #17488B;
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 100%;
+  text-align: center;
+  font-size: 1em;
+  transition: background-color 0.3s ease;
+}
+
+.applyButton:hover {
+  background-color: #002D62;
+}
+
+.contentContainer {
+  flex-grow: 1;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.contentContainer h1{
+  color: #17488B;
+  font-size: 1.8em;
+}
+
+.vuelosList {
+  list-style-type: none;
+  padding: 0;
+}
+
+.vueloItem {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.vueloItem:hover {
+  background-color: #8bb3fd;
+  border-color: #17488B;
+}
+
+.selected {
+  background-color: #cce5ff;
+  border-color: #000000;
+}
+
+.vueloHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.hora {
+  font-size: 1.5em;
+  color: #17488B;
+}
+
+.duracion {
+  font-size: 1em;
+  color: #17488B;
+  text-align: center;
+}
+
+.vueloBody {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.vueloImg {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 750px;
+}
+
+.tipoVuelo {
+  font-size: 1em;
+  color: green;
+  width: 26px;
+}
+
+.operadoPor {
+  font-size: 0.9em;
+  color: #555;
+}
+
+.precio {
+  font-size: 1.5em;
+  color: #17488B;
+}
+
+.botonesContainer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.regresarBtn,
+.reservarBtn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.regresarBtn {
+  background-color: #f5a623;
+  color: white;
+}
+
+.reservarBtn {
+  background-color: #2e63ac;
+  color: white;
+}
+
+.regresarBtn:hover {
+  background-color: #d4881b;
+}
+
+.reservarBtn:hover {
+  background-color: #17488B;
+}

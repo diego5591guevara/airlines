@@ -109,6 +109,75 @@
   position: relative;
 }
 
+
+  /*******NUEVO********/
+
+  .hero {
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/bgSearch.png'); 
+    background-size: cover;
+    background-position: center;
+    height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+  }
+  
+  .content {
+    color: white;
+  }
+  
+  .pageContent {
+    padding: 60px 20px; 
+    background-color: #f8f9fa; 
+    text-align: center;
+    border-radius: 8px; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);     
+  }
+  
+  .pageContent h2 {
+    font-size: 28px; 
+    font-weight: 700;
+    color: #333; 
+    margin-bottom: 20px; 
+  }
+  
+  .pageContent p {
+    font-size: 18px; 
+    color: #555; 
+    margin-bottom: 30px; 
+  }
+  
+  .ctaButton {
+    background-color: #002D62; 
+    color: white;
+    padding: 15px 40px; 
+    border: none;
+    border-radius: 5px; 
+    cursor: pointer;
+    font-size: 18px;
+    transition: background-color 0.3s;
+    text-transform: uppercase;
+  }
+  
+  .ctaButton:hover {
+    background-color: #17488B; 
+  }
+
+  .carouselContainer {
+    padding: 40px 0;
+    background-color: #ffffff;
+    text-align: center;
+  }
+  
+  .carouselImage {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
 @media (hover: hover) and (pointer: fine) {
   .card:hover {
     background: rgba(var(--card-rgb), 0.1);

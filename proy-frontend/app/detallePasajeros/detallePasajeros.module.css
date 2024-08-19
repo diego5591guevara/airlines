@@ -2,7 +2,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 70vh; 
+  height: 70vh;
 }
 
 .loadingGif {
@@ -11,26 +11,96 @@
 }
 
 .pasajerosContainer {
-  max-width: 700px; 
+  display: inline-flex;
+  justify-content: space-between;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
   color: #17488B;
 }
 
-.pasajeroCard {
+.sidebarLeft {
   background-color: #f9f9f9;
-  border-radius: 8px;  
-  padding: 15px;
-  margin-bottom: 15px;
   border-radius: 8px;
+  padding: 15px;
+  width: 250px;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
- 
+  margin: 0 0 20px 0;
+}
+
+.flightGroup {
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #17488B;
+}
+
+.flightGroup h4 {
+  color: #17488B;
+  margin-bottom: 10px;
+}
+
+.flightGroup p {
+  margin: 5px 0;
+}
+.sidebarLeft h3 {
+  color: #17488B;
+  font-size: 1.2em;
+  margin-bottom: 10px;
+  border-bottom: 2px solid #17488B;
+  padding-bottom: 5px;
+}
+
+.flightDetails p {
+  font-size: 0.9em;
+  margin: 5px 0;
+  color: #333;
+}
+
+.flightDetails p strong {
+  color: #17488B;
+}
+
+.servicesList {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.servicesList li {
+  font-size: 0.9em;
+  margin-bottom: 5px;
+  padding: 8px;
+  border-radius: 5px;
+  background-color: #e3f2fd;
+  color: #17488B;
+}
+
+.servicesList li:hover {
+  background-color: #bbdefb;
+}
+
+.formContainer {
+  flex-grow: 1;
+  margin: 0 20px;
+  width: 750px;
+}
+
+.formContainer h1{
+  color: #17488B;
+  font-size: 1.8em;
+}
+
+.pasajeroCard {
+  background-color: #ffffff;
+  border-radius: 8px;
+  padding: 15px;
+  margin: 15px 0 15px 0;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .inputRow {
   display: flex;
   justify-content: space-between;
-  gap: 15px; 
+  gap: 15px;
 }
 
 .inputRow .inputText {
@@ -39,7 +109,7 @@
 
 .fieldGroup {
   margin-bottom: 10px;
-  width: 300px;
+  width: 100%;
 }
 
 .label {
@@ -52,21 +122,16 @@
 .selectDropdown {
   width: 100%;
   padding: 10px;
-  border-radius: 8px; 
+  border-radius: 8px;
   border: 1px solid #294983;
   font-size: 14px;
   box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.1);
-  color: #000; 
-}
-
-.inputCheckbox {
-  margin-top: 10px;
-  margin-bottom: 15px;
+  color: #000;
 }
 
 .buttonGroup {
   display: flex;
-  justify-content: space-between; 
+  justify-content: space-between;
   margin-top: 20px;
 }
 
@@ -85,7 +150,7 @@
 }
 
 .regresarButton {
-  background-color: #f5a623; 
+  background-color: #f5a623;
 }
 
 .regresarButton:hover {

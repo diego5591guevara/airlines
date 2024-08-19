@@ -84,10 +84,13 @@ const BuscarVuelo = () => {
   };
 
   const onChangeOrigen = (event: any, {  newValue, suggestion }: any) => {
+    console.log(newValue);
+    console.log(suggestion);
     if (suggestion) {
-      setOrigen(suggestion.aeropuertos[0].codigo); 
+      setOrigen(suggestion.aeropuertos[0].codigo);
+      //setOrigen(`${suggestion.ciudad}, ${suggestion.aeropuertos[0].nombre} (${suggestion.aeropuertos[0].codigo})`); 
       setOrigenDisplay(`${suggestion.ciudad}, ${suggestion.aeropuertos[0].nombre} (${suggestion.aeropuertos[0].codigo})`); 
-    } else {
+    } else {      
       setOrigen(newValue);
       setOrigenDisplay(newValue);
     }
@@ -116,6 +119,7 @@ const BuscarVuelo = () => {
             suggestions={suggestionsOrigen}
             onSuggestionsFetchRequested={onSuggestionsFetchRequestedOrigen}
             onSuggestionsClearRequested={onSuggestionsClearRequestedOrigen}
+            //getSuggestionValue={(suggestion) => suggestion.aeropuertos[0].codigo + " (" + suggestion.pais + ")"}
             getSuggestionValue={(suggestion) => suggestion.aeropuertos[0].codigo}
             renderSuggestion={(suggestion) => (
               <div>
@@ -143,6 +147,7 @@ const BuscarVuelo = () => {
             suggestions={suggestionsOrigen}
             onSuggestionsFetchRequested={onSuggestionsFetchRequestedOrigen}
             onSuggestionsClearRequested={onSuggestionsClearRequestedOrigen}
+            //getSuggestionValue={(suggestion) => suggestion.aeropuertos[0].codigo + " (" + suggestion.pais + ")"}
             getSuggestionValue={(suggestion) => suggestion.aeropuertos[0].codigo}
             renderSuggestion={(suggestion) => (
               <div>
@@ -197,8 +202,7 @@ const BuscarVuelo = () => {
         </div>
         <button
           type="submit"
-          className={styles.submitButton}
-          style={{ background: "#17488B" }}
+          className={styles.submitButton}       
         >
           Buscar vuelo
         </button>
